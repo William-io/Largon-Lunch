@@ -6,8 +6,8 @@
             string title,
             string description, 
             string image,
-            string price, 
-            string quantityOnHand)
+            decimal price,
+            decimal quantityOnHand)
         {
             Title = title;
             Description = description;
@@ -16,10 +16,15 @@
             QuantityOnHand = quantityOnHand;
         }
 
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Image { get; set; }
-        public string Price { get; set; }
-        public string QuantityOnHand { get; set; }
+        public string Title { get; private set; }
+        public string Description { get; private set; }
+        public string Image { get; private set; }
+        public decimal Price { get; private set; }
+        public decimal QuantityOnHand { get; private set; }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }

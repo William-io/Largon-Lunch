@@ -14,10 +14,10 @@ namespace Largon_Lunch.Test
                 "Vilela", 
                 "702103", 
                 "capuletos@live.com",
-                "8587356754", 
-                "Montese");
+                "8587356754"
+                );
 
-            //c.FirstName = "";
+            
         }
     }
 }

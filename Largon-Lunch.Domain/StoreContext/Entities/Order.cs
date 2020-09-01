@@ -1,23 +1,43 @@
-﻿using System;
+﻿using Largon_Lunch.Domain.StoreContext.Enums;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Largon_Lunch.Domain.StoreContext.Entities
 {
     public class Order
     {
-        public Order(string number, string status)
+        private readonly IList<OrderItem> _items;
+        private readonly IList<Delivery> _deliveries;
+
+        public Order(Customer customer)
         {
-            Number = number;
-            Status = status;
+            Customer = customer;
+            Number = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 8).ToUpper();
+            CreateDate = DateTime.Now;
+            Status = EOrderStatus.Created;
+            _items = new List<OrderItem>();
+            _deliveries = new List<Delivery>();
         }
 
-        public Customer Customer { get; set; }
-        public string Number { get; set; }
-        public DateTime CreateDate { get; set; }
-        public string Status { get; set; }
-        public IList<OrderItem> Items { get; set; }
-        public IList<Delivery> Deliveries { get; set; }
+        public Customer Customer { get; private set; }
+        public string Number { get; private set; }
+        public DateTime CreateDate { get; private set; }
+        public EOrderStatus Status { get; private set; }
+        public IReadOnlyCollection<OrderItem> Items => _items.ToArray();
+        public IReadOnlyCollection<Delivery> Deliveries => _deliveries.ToArray();
 
+        public void AddItem(OrderItem item)
+        {
+            _items.Add(item);
+            //Validar 
+        }
+
+        public void AddDelivert(Delivery delivery)
+        {
+            _deliveries.Add(delivery);
+        }
 
         public void Place() { }
     }
