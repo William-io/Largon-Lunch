@@ -1,10 +1,11 @@
-﻿using Largon_Lunch.Domain.StoreContext.ValueObjects;
+﻿using FluentValidator;
+using Largon_Lunch.Domain.StoreContext.ValueObjects;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Largon_Lunch.Domain.StoreContext.Entities
 {
-    public class Customer
+    public class Customer : Notifiable
     {
         private readonly IList<Address> _addresses;
 

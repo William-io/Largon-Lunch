@@ -1,8 +1,9 @@
-﻿using Largon_Lunch.Domain.StoreContext.Enums;
+﻿using FluentValidator;
+using Largon_Lunch.Domain.StoreContext.Enums;
 
 namespace Largon_Lunch.Domain.StoreContext.ValueObjects
 {
-    public class Address
+    public class Address : Notifiable
     {
         public Address(
             string street,

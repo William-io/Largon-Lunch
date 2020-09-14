@@ -1,6 +1,8 @@
-﻿namespace Largon_Lunch.Domain.StoreContext.Entities
+﻿using FluentValidator;
+
+namespace Largon_Lunch.Domain.StoreContext.Entities
 {
-    public class Product
+    public class Product : Notifiable
     {
         public Product(
             string title,
